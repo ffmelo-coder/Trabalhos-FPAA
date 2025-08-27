@@ -1,8 +1,8 @@
-# Projeto KaratsubaMultiply
+# Projeto KaratsubaM
 
 ## Sobre o Projeto
 
-O **KaratsubaMultiply** é um projeto educativo desenvolvido para demonstrar a multiplicação eficiente de inteiros grandes utilizando o **algoritmo de Karatsuba**.
+O **KaratsubaM** é um projeto educativo desenvolvido para demonstrar a multiplicação eficiente de inteiros grandes utilizando o **algoritmo de Karatsuba**.
 O código é implementado em **Python puro**, sem dependências externas, de forma simples e fácil de entender.
 
 Ele mostra como a técnica de **divisão e conquista** pode reduzir a complexidade da multiplicação tradicional ($O(n^2)$) para aproximadamente $O(n^{1.58})$.
@@ -324,3 +324,4 @@ $$
   * $O(n)$, dominado pela manipulação dos números em cada nível de recursão.
 
 ---
+
