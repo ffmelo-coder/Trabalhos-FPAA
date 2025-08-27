@@ -197,9 +197,9 @@ Resultado esperado (checagem manual):
 
 ### Grafo de fluxo
 
-```
+<img width="403" height="622" alt="image" src="https://github.com/user-attachments/assets/986c944d-cbc4-4f6f-84c9-1abb551604c4" />
 
-```
+Feito com DRAWIO
 
 ---
 
@@ -324,4 +324,5 @@ $$
   * $O(n)$, dominado pela manipulação dos números em cada nível de recursão.
 
 ---
+
 
