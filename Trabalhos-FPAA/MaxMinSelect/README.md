@@ -27,17 +27,6 @@ Ele segue a ideia de **divisão e conquista**:
 
 ---
 
-## O que é a notação Big-O?
-
-A **notação Big-O** mede como o tempo de execução cresce em função da entrada.
-
-No caso deste algoritmo:
-
-* **Força bruta:** percorrendo a lista inteira, teria **O(n)**.
-* **MaxMinSelect com divisão e conquista:** também tem **O(n)**, mas organiza o processo de forma recursiva.
-
----
-
 ## Sobre as bibliotecas utilizadas
 
 Nenhuma biblioteca externa foi utilizada.
@@ -147,8 +136,9 @@ Menor elemento: 7
 5. chamada recursiva esquerda
 6. chamada recursiva direita
 7. `return max(...), min(...)`
+8. Fim da função
 
-**N = 7**
+**N = 8**
 
 ---
 
@@ -160,17 +150,16 @@ Menor elemento: 7
 * (4) → (5)
 * (5) → (6)
 * (6) → (7)
+* (3) -> (8)
+* (7) -> (8)
 
-**E = 6**
+**E = 8**
 
 ---
 
 ### Grafo de fluxo
 
-<img width="639" height="717" alt="image" src="https://github.com/user-attachments/assets/10d1f725-dae3-424c-aa15-0113b912ab0a" />
-
-
-
+<img width="260" height="447" alt="image" src="https://github.com/user-attachments/assets/f74a32ba-035e-49cd-970a-3dc7887a4db9" />
 
 ---
 
@@ -182,21 +171,21 @@ $$
 M = E - N + 2P
 $$
 
-* \$E = 6\$ (arestas)
-* \$N = 7\$ (nós)
+* \$E = 8\$ (arestas)
+* \$N = 8\$ (nós)
 * \$P = 1\$ (componente conectado)
 
 $$
-M = 6 - 7 + 2(1) = 1
+M = 8 - 8 + 2(1) = 2
 $$
 
 ---
 
 ## Resultado
 
-A **complexidade ciclomática da função `maxmin_select` é 1**.
+A **complexidade ciclomática da função `maxmin_select` é 2**.
 
-Isso significa que existe apenas **1 caminho de execução independente** (decisão simples entre caso base e recursão).
+Isso significa que existe apenas **2 caminhos de execução** (decisão simples entre caso base e recursão).
 
 ---
 
