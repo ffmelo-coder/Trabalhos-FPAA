@@ -202,86 +202,61 @@ Isso significa que existe apenas **1 caminho de execução independente** (decis
 
 # Análise da Complexidade Assintótica
 
-## 1. Complexidade Temporal
+## 1. Recorrência
 
-O algoritmo percorre todos os elementos da lista.
-
-A cada divisão, ele chama recursivamente as duas metades até listas unitárias.
-Portanto, a recorrência é:
+A função `maxmin_select` segue a recorrência:
 
 $$
-T(n) = 2T\left(\frac{n}{2}\right) + O(1)
-$$
-
-Aplicando o Teorema Mestre:
-
-$$
-T(n) = O(n)
+T(n) = 2T(n/2) + O(1)
 $$
 
 ---
 
-## 2. Complexidade Espacial
+## 2. Identificação dos parâmetros
 
-* O algoritmo usa **recursão**, então o espaço é dominado pela **profundidade da pilha**.
-* A cada nível, o array é dividido em duas partes.
-* A profundidade máxima é:
+Comparando com a forma geral \(T(n) = aT(n/b) + f(n)\):
 
-$$
-O(\log n)
-$$
+- \(a = 2\)  
+- \(b = 2\)  
+- \(f(n) = O(1)\)
 
-Além da pilha, não há armazenamento adicional significativo.
+---
 
-Portanto:
+## 3. Cálculo de \(p = \log_b a\)
 
 $$
-O(\log n)
+p = \log_2 2 = 1
 $$
 
 ---
 
-## 3. Casos Principais
+## 4. Caso do Teorema Mestre
 
-### Melhor Caso
+Comparando \(f(n)\) com \(n^{\log_b a} = n^1 = n\):
 
-* Quando a lista tem **1 elemento**, o algoritmo retorna imediatamente.
-* Complexidade:
+- \(f(n) = \Theta(1) = O(n^{1-\varepsilon})\) com \(\varepsilon=1\).  
+- Logo, estamos no **Caso 1** do Teorema Mestre.
 
-$$
-O(1)
-$$
+---
 
-### Caso Médio
+## 5. Solução assintótica
 
-* Para listas de tamanho arbitrário \$n\$, o algoritmo precisa analisar todas as divisões.
-* Complexidade:
+Pelo **Caso 1** do Teorema Mestre:
 
 $$
-O(n)
-$$
-
-### Pior Caso
-
-* Igual ao caso médio, pois todos os elementos precisam ser percorridos.
-* Complexidade:
-
-$$
-O(n)
+T(n) = \Theta(n^{\log_b a}) = \Theta(n)
 $$
 
 ---
 
-## Conclusão
+## 6. Conclusão
 
-* **Tempo**:
+- **Tempo**:  
+  * Melhor caso: \(O(1)\)  
+  * Caso médio: \(O(n)\)  
+  * Pior caso: \(O(n)\)  
 
-  * Melhor caso: \$O(1)\$
-  * Caso médio: \$O(n)\$
-  * Pior caso: \$O(n)\$
-
-* **Espaço**:
-
-  * \$O(\log n)\$ devido à pilha de chamadas recursivas
+- **Espaço**:  
+  * \(O(\log n)\) devido à pilha de chamadas recursivas  
 
 ---
