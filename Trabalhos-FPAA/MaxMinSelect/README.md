@@ -167,6 +167,9 @@ Menor elemento: 7
 
 ### Grafo de fluxo
 
+<img width="639" height="717" alt="image" src="https://github.com/user-attachments/assets/10d1f725-dae3-424c-aa15-0113b912ab0a" />
+
+
 
 
 ---
