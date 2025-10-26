@@ -27,17 +27,6 @@ Ele segue a ideia de **divisão e conquista**:
 
 ---
 
-## O que é a notação Big-O?
-
-A **notação Big-O** mede como o tempo de execução cresce em função da entrada.
-
-No caso deste algoritmo:
-
-* **Força bruta:** percorrendo a lista inteira, teria **O(n)**.
-* **MaxMinSelect com divisão e conquista:** também tem **O(n)**, mas organiza o processo de forma recursiva.
-
----
-
 ## Sobre as bibliotecas utilizadas
 
 Nenhuma biblioteca externa foi utilizada.
@@ -147,8 +136,9 @@ Menor elemento: 7
 5. chamada recursiva esquerda
 6. chamada recursiva direita
 7. `return max(...), min(...)`
+8. Fim da função
 
-**N = 7**
+**N = 8**
 
 ---
 
@@ -160,14 +150,16 @@ Menor elemento: 7
 * (4) → (5)
 * (5) → (6)
 * (6) → (7)
+* (3) -> (8)
+* (7) -> (8)
 
-**E = 6**
+**E = 8**
 
 ---
 
 ### Grafo de fluxo
 
-
+<img width="260" height="447" alt="image" src="https://github.com/user-attachments/assets/f74a32ba-035e-49cd-970a-3dc7887a4db9" />
 
 ---
 
@@ -179,106 +171,81 @@ $$
 M = E - N + 2P
 $$
 
-* \$E = 6\$ (arestas)
-* \$N = 7\$ (nós)
+* \$E = 8\$ (arestas)
+* \$N = 8\$ (nós)
 * \$P = 1\$ (componente conectado)
 
 $$
-M = 6 - 7 + 2(1) = 1
+M = 8 - 8 + 2(1) = 2
 $$
 
 ---
 
 ## Resultado
 
-A **complexidade ciclomática da função `maxmin_select` é 1**.
+A **complexidade ciclomática da função `maxmin_select` é 2**.
 
-Isso significa que existe apenas **1 caminho de execução independente** (decisão simples entre caso base e recursão).
+Isso significa que existe apenas **2 caminhos de execução** (decisão simples entre caso base e recursão).
 
 ---
 
 # Análise da Complexidade Assintótica
 
-## 1. Complexidade Temporal
+## 1. Recorrência
 
-O algoritmo percorre todos os elementos da lista.
-
-A cada divisão, ele chama recursivamente as duas metades até listas unitárias.
-Portanto, a recorrência é:
+A função `maxmin_select` segue a recorrência:
 
 $$
-T(n) = 2T\left(\frac{n}{2}\right) + O(1)
-$$
-
-Aplicando o Teorema Mestre:
-
-$$
-T(n) = O(n)
+T(n) = 2T(n/2) + O(1)
 $$
 
 ---
 
-## 2. Complexidade Espacial
+## 2. Identificação dos parâmetros
 
-* O algoritmo usa **recursão**, então o espaço é dominado pela **profundidade da pilha**.
-* A cada nível, o array é dividido em duas partes.
-* A profundidade máxima é:
+Comparando com a forma geral \(T(n) = aT(n/b) + f(n)\):
 
-$$
-O(\log n)
-$$
+- \(a = 2\)  
+- \(b = 2\)  
+- \(f(n) = O(1)\)
 
-Além da pilha, não há armazenamento adicional significativo.
+---
 
-Portanto:
+## 3. Cálculo de \(p = \log_b a\)
 
 $$
-O(\log n)
+p = \log_2 2 = 1
 $$
 
 ---
 
-## 3. Casos Principais
+## 4. Caso do Teorema Mestre
 
-### Melhor Caso
+Comparando \(f(n)\) com \(n^{\log_b a} = n^1 = n\):
 
-* Quando a lista tem **1 elemento**, o algoritmo retorna imediatamente.
-* Complexidade:
+- \(f(n) = \Theta(1) = O(n^{1-\varepsilon})\) com \(\varepsilon=1\).  
+- Logo, estamos no **Caso 1** do Teorema Mestre.
 
-$$
-O(1)
-$$
+---
 
-### Caso Médio
+## 5. Solução assintótica
 
-* Para listas de tamanho arbitrário \$n\$, o algoritmo precisa analisar todas as divisões.
-* Complexidade:
+Pelo **Caso 1** do Teorema Mestre:
 
 $$
-O(n)
-$$
-
-### Pior Caso
-
-* Igual ao caso médio, pois todos os elementos precisam ser percorridos.
-* Complexidade:
-
-$$
-O(n)
+T(n) = \Theta(n^{\log_b a}) = \Theta(n)
 $$
 
 ---
 
-## Conclusão
+## 6. Conclusão
 
-* **Tempo**:
+- **Tempo**:  
+  * Melhor caso: \(O(1)\)  
+  * Caso médio: \(O(n)\)  
+  * Pior caso: \(O(n)\)  
 
-  * Melhor caso: \$O(1)\$
-  * Caso médio: \$O(n)\$
-  * Pior caso: \$O(n)\$
-
-* **Espaço**:
-
-  * \$O(\log n)\$ devido à pilha de chamadas recursivas
+- **Espaço**:  
+  * \(O(\log n)\) devido à pilha de chamadas recursivas  
 
 ---
